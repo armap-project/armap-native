@@ -6,7 +6,27 @@ import ThemedSafeView from "../src/components/themed/safeView";
 
 import { ThemeProvider } from "../src/themeCtx";
 
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
+
 export default function RootLayout() {
+    const [fontsLoaded] = useFonts({
+        GoogleSans: require("../assets/fonts/GoogleSans.ttf"),
+        GoogleSansItalic: require("../assets/fonts/GoogleSansItalic.ttf"),
+    });
+
+    useEffect(() => {
+        if (fontsLoaded) {
+            SplashScreen.hideAsync();
+        }
+    }, [fontsLoaded]);
+
+    if (!fontsLoaded) {
+        // loading placeholder
+        return null;
+    }
+
     return (
         <SafeAreaProvider>
             <ThemeProvider>
