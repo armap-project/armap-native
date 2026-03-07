@@ -4,30 +4,73 @@ import ThemedSafeView from "../src/components/themed/safeView";
 
 import { useStyles } from "../src/globalStyle";
 
+import { BlurView } from "expo-blur";
+
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+
+import MapView from "react-native-maps";
+
+import { useTheme } from "../src/themeCtx";
 
 const Main = () => {
     const styles = useStyles();
+    const { theme } = useTheme();
+
     return (
-        <ThemedSafeView
+        <ThemedView
             style={{
                 flex: 1,
             }}
         >
-            <ThemedView
+            <ThemedSafeView
                 style={{
-                    marginBottom: 30,
-                    flexDirection: "row",
+                    position: "absolute",
+                    zIndex: 10,
+                    width: "100%",
+                    justifyContent: "center",
                     alignItems: "center",
-                    justifyContent: "space-between",
-                    marginLeft: 25,
-                    marginRight: 25,
+                    backgroundColor: theme.bgTranslucent,
                 }}
             >
-                <ThemedText style={styles.logo}>ArMap</ThemedText>
-                <MaterialIcons name="dark-mode" size={24} color="black" />
-            </ThemedView>
-        </ThemedSafeView>
+                <ThemedView
+                    style={{
+                        width: "100%",
+                        zIndex: 10,
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        paddingLeft: 25,
+                        paddingRight: 25,
+                        backgroundColor: "transparent",
+                    }}
+                >
+                    <ThemedText style={styles.logo}>ArMap</ThemedText>
+                    <MaterialIcons
+                        name="dark-mode"
+                        size={24}
+                        color={theme.fg}
+                    />
+                </ThemedView>
+            </ThemedSafeView>
+            <BlurView
+                intensity={100}
+                experimentalBlurMethod="dimezisBlurView"
+            />
+
+            <MapView
+                style={{
+                    width: "100%",
+                    height: "100%",
+                }}
+                initialRegion={{
+                    latitude: 37.78825,
+                    longitude: -122.4324,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                }}
+            />
+        </ThemedView>
     );
 };
 

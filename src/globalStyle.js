@@ -14,7 +14,7 @@ export function useStyles() {
                     fontFamily: "GoogleSans",
                 },
                 logo: {
-                    fontSize: 48,
+                    fontSize: 36,
                     fontFamily: "GoogleSansBoldItalic",
                 },
             }),
