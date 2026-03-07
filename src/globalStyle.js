@@ -15,7 +15,7 @@ export function useStyles() {
                 },
                 logo: {
                     fontSize: 48,
-                    fontFamily: "GoogleSansItalic",
+                    fontFamily: "GoogleSansBoldItalic",
                 },
             }),
         [theme],
