@@ -63,6 +63,8 @@ const Main = () => {
                     width: "100%",
                     height: "100%",
                 }}
+                toolbarEnabled={false}
+                showsCompass={false}
                 initialRegion={{
                     latitude: 37.78825,
                     longitude: -122.4324,
